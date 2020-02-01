@@ -31,14 +31,14 @@ jobs:
 #            ${{ runner.os }}-node-
       - name: Install yarn
         run: npm install -g yarn
-#      - name: Load yarn cache
-#        id: check-yarn-cache
-#        uses: actions/cache@v1
-#        with:
-#          path: node_modules
-#          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
-#          restore-keys: |
-#            ${{ runner.os }}-yarn-
+      - name: Load yarn cache
+        id: check-yarn-cache
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 #      - name: Install dependencies
 #        if: steps.check-yarn-cache.outputs.cache-hit != 'true'
 #        run: yarn install
@@ -52,7 +52,6 @@ jobs:
 #        run: yarn run build:win
       - name: Mock assets for integration tests
         run: |
-          echo %cd%
-          xcopy %cd%\tests\mock-assets\*.jpg %userprofile%\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets\ /y
+          xcopy .\tests\mock-assets\*.jpg %userprofile%\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets\ /y
       - name: Run integration tests
         run: yarn run test:integration
