@@ -77,7 +77,10 @@ module.exports = async function (args, options, logger) {
     /* 8. Announce the result */
     logger.info(chalk.green(`\nSuccessfully copy ${count} new images!`));
     logger.info(chalk(`Save folder (Ctrl + click to open): ${chalk.underline.cyan(`file://${pathToSave}`)}`));
+    logger.info(chalk.yellow(PATH_TO_IMAGE));
+
   } else {
+    logger.info(chalk.yellow(PATH_TO_IMAGE));
     logger.info(chalk.yellow('\nI found no NEW images :) Better luck next time!'));
   }
 };
