@@ -1,7 +1,7 @@
 var nixt = require('nixt');
 
-describe('Should get images with', () => {
-  it('default settings', function(done) {
+describe('Should be able to get images', () => {
+  it('with default settings', function(done) {
     nixt()
     .stdin('\n')
     .run('get-lock-screen get-images')
