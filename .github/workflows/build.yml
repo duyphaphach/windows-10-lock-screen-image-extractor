@@ -49,8 +49,8 @@ jobs:
 #        run: |
 #          yarn run test:unit:coverage --token=${{secrets.CODACY_PROJECT_API_TOKEN}}
       - name: Build exe
-          run: |
-            yarn run build:win
+        run: |
+          yarn run build:win
       - name: Run integration tests
         run: |
           yarn run test:integration
