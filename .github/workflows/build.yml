@@ -53,8 +53,6 @@ jobs:
       - name: Mock assets for integration tests
         run: |
           robocopy ./tests/mock-assets/ %userprofile%\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets\ /v
-          if ErrorLevel 8 exit /B 1
-          echo "Successfully copied images!"
-          exit /B 0
+          set +e
       - name: Run integration tests
         run: yarn run test:integration
