@@ -48,8 +48,8 @@ jobs:
 #      - name: Run unit tests with coverage
 #        run: |
 #          yarn run test:unit:coverage --token=${{secrets.CODACY_PROJECT_API_TOKEN}}
-#      - name: Build exe
-#        run: yarn run build:win
+      - name: Build exe
+        run: yarn run build:win
       - name: Mock assets for integration tests
         run: |
           (robocopy ./tests/mock-assets/ %userprofile%\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets\ /v) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0
