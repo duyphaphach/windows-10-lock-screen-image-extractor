@@ -52,6 +52,6 @@ jobs:
 #        run: yarn run build:win
       - name: Mock assets for integration tests
         run: |
-          xcopy .\tests\mock-assets\*.jpg %userprofile%\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets\ /y
+          xcopy .\tests\mock-assets\*.jpg %userprofile%\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets\ /y /j
       - name: Run integration tests
         run: yarn run test:integration
