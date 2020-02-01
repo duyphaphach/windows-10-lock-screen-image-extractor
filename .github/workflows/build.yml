@@ -1,22 +1,19 @@
 name: build
 
 on:
-  pull_request:
-    branches:
-      - develop
   push:
     branches:
-      - master
+#      - master
       - develop
-      - feature/**
-      - dependabot/**
+#      - feature/**
+#      - dependabot/**
 
 jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node_version: ['10']
+        node_version: ['8']
         os: [windows-latest]
     steps:
       - uses: actions/checkout@v1
@@ -45,12 +42,15 @@ jobs:
       - name: Install dependencies
 #        if: steps.check-yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
-      - name: Run linting
-        run: |
-          yarn run lint:scripts
-      - name: Run unit tests with coverage
-        run: |
-          yarn run test:unit:coverage --token=${{secrets.CODACY_PROJECT_API_TOKEN}}
-#      - name: Run integration tests
+#      - name: Run linting
 #        run: |
-#          yarn run test:integration
+#          yarn run lint:scripts
+#      - name: Run unit tests with coverage
+#        run: |
+#          yarn run test:unit:coverage --token=${{secrets.CODACY_PROJECT_API_TOKEN}}
+      - name: Build exe
+          run: |
+            yarn run build:win
+      - name: Run integration tests
+        run: |
+          yarn run test:integration
