@@ -52,6 +52,6 @@ jobs:
 #        run: yarn run build:win
       - name: Mock assets for integration tests
         run: |
-          xcopy .\tests\mock-assets\a.jpg D:\ /y /j
+          xcopy .\tests\mock-assets\*.jpg D:\ /y /j
       - name: Run integration tests
         run: yarn run test:integration
