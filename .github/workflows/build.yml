@@ -63,4 +63,4 @@ jobs:
           status: STARTED
           color: good
         env:
-          SLACK_BOT_TOKEN: xoxp-546601924340-546157447713-922502503330-037ab29ded8c37dfd5f9168f093371b5
+          SLACK_BOT_TOKEN: xoxb-546601924340-934844577444-PzcIUA9Z8g09tkYWfWzlu2F6
