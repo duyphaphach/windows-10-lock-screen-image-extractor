@@ -56,9 +56,36 @@ jobs:
 #        shell: cmd
 #      - name: Run integration tests
 #        run: yarn run test:integration
-      - name: Slack Notification
-        uses: homoluctus/slatify@master
-        with:
-          type: ${{ job.status }}
-          job_name: build
-          url: https://hooks.slack.com/services/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
+  - uses: 8398a7/action-slack@v2
+    with:
+      status: custom
+      payload: |
+        {
+          text: "Custom Field Check",
+          attachments: [{
+            "author_name": "8398a7@action-slack", // json
+            fallback: 'fallback',
+            color: 'good',
+            title: 'CI Result',
+            text: 'Succeeded',
+            fields: [{
+              title: 'lower case',
+              value: 'LOWER CASE CHECK'.toLowerCase(),
+              short: true
+            },
+            {
+              title: 'reverse',
+              value: 'gnirts esrever'.split('').reverse().join(''),
+              short: true
+            },
+            {
+              title: 'long title1',
+              value: 'long value1',
+              short: false
+            }],
+            actions: [{
+            }]
+          }]
+        }
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
