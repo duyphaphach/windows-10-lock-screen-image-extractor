@@ -17,10 +17,6 @@ jobs:
         os: [windows-latest]
     steps:
       - uses: actions/checkout@v1
-      - name: Setup environment with node ${{ matrix.node_version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node_version }}
   ##      - name: Load npm cache
   ##        id: check-npm-cache
   ##        uses: actions/cache@v1
@@ -57,6 +53,7 @@ jobs:
   #      - name: Run integration tests
   #        run: yarn run test:integration
   report:
+    needs: build
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -65,7 +62,7 @@ jobs:
     steps:
       - name: Slack notification
         env:
-          SLACK_WEBHOOK: https://hooks.slack.com/services/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
+          SLACK_WEBHOOK: https://hooks.slack.com/services/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
           SLACK_USERNAME: ThisIsMyUsername
           SLACK_CHANNEL: general
           SLACK_AVATAR: repository
