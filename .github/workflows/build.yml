@@ -57,6 +57,6 @@ jobs:
 #      - name: Run integration tests
 #        run: yarn run test:integration
       - name: Report
-      uses: actions/slack-notifier-action@v1
-      with:
-        webhook_url: 'https://hooks.slack.com/services/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'
+        uses: actions/slack-notifier-action@v1
+        with:
+          webhook_url: 'https://hooks.slack.com/services/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'
