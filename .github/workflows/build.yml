@@ -60,5 +60,5 @@ jobs:
         uses: homoluctus/slatify@master
         with:
           type: ${{ job.status }}
-          job_name: 'build'
-          url: https://hooks.slack.com/services/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
+          job_name: build
+          url: https://hooks.slack.com/services/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
