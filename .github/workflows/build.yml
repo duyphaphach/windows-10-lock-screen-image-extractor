@@ -58,7 +58,7 @@ jobs:
 #        run: yarn run test:integration
       - name: Notify slack
         env:
-          SLACK_BOT_TOKEN: xoxp-546601924340-546157447713-548980187120-2e5164d5c936849cd35c036a1a38d0ee
+          SLACK_BOT_TOKEN: xoxb-546601924340-935448628677-22FQmW4qLxjNwuwgYApP6Lpb
         uses: pullreminders/slack-action@master
         with:
           args: '{\"channel\":\"C1234567890\",\"text\":\"Hello world\"}'
