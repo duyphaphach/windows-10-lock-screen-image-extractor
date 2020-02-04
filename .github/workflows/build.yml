@@ -56,8 +56,9 @@ jobs:
 #        shell: cmd
 #      - name: Run integration tests
 #        run: yarn run test:integration
-        - name: Slack notification
-          uses: Ilshidur/action-slack@master
-          env:
-            SLACK_WEBHOOK: https://hooks.slack.com/services/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
-            SLACK_CUSTOM_PAYLOAD: '{"text":"Custom payload from {{ GITHUB_REPOSITORY }} \\n *with* `new` _line_ escaped","username": "{{ GITHUB_ACTOR }}"}'
+      - name: Notify slack
+        env:
+          SLACK_BOT_TOKEN: xoxp-546601924340-546157447713-548980187120-2e5164d5c936849cd35c036a1a38d0ee
+        uses: pullreminders/slack-action@master
+        with:
+          args: '{\"channel\":\"C1234567890\",\"text\":\"Hello world\"}'
