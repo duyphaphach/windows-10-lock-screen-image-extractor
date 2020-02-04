@@ -63,9 +63,12 @@ jobs:
         node_version: ["8"]
         os: [windows-latest]
     steps:
-      - name: Notify slack
+      - name: Slack notification
         env:
-          SLACK_BOT_TOKEN: xoxb-546601924340-937426739335-lxd8x6JafaKlyfgareIvb04d
-        uses: pullreminders/slack-action@master
+          SLACK_WEBHOOK: https://hooks.slack.com/services/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
+          SLACK_USERNAME: ThisIsMyUsername
+          SLACK_CHANNEL: general
+          SLACK_AVATAR: repository
+        uses: Ilshidur/action-slack@master
         with:
-          args: "{\"channel\":\"CTGUTFXNY\",\"text\":\"Hello world\"}"
+          args: 'A new commit has been pushed.'
