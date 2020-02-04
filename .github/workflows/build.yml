@@ -61,8 +61,5 @@ jobs:
         if: always()
         with:
           type: ${{ job.status }}
-          job_name: '*Lint Check*'
-          mention: 'here'
-          mention_if: 'failure'
-          channel: '#random'
+          job_name: 'build'
           url: https://hooks.slack.com/services/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
