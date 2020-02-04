@@ -58,8 +58,7 @@ jobs:
 #        run: yarn run test:integration
       - name: Slack Notification
         uses: homoluctus/slatify@master
-        if: always()
         with:
           type: ${{ job.status }}
           job_name: 'build'
-          url: https://hooks.slack.com/services/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
+          url: https://hooks.slack.com/services/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
