@@ -56,9 +56,13 @@ jobs:
 #        shell: cmd
 #      - name: Run integration tests
 #        run: yarn run test:integration
-      - name: Notify slack
-        env:
-          SLACK_BOT_TOKEN: xoxb-546601924340-935448628677-22FQmW4qLxjNwuwgYApP6Lpb
-        uses: pullreminders/slack-action@master
+      - name: Slack Notification
+        uses: homoluctus/slatify@master
+        if: always()
         with:
-          args: '{\"channel\":\"C1234567890\",\"text\":\"Hello world\"}'
+          type: ${{ job.status }}
+          job_name: '*Lint Check*'
+          mention: 'here'
+          mention_if: 'failure'
+          channel: '#random'
+          url: https://hooks.slack.com/services/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
