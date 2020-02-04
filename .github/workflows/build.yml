@@ -3,7 +3,7 @@ name: build
 on:
   push:
     branches:
-#      - master
+      #      - master
       - develop
       - feature/**
 #      - dependabot/**
@@ -13,79 +13,84 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node_version: ['8']
+        node_version: ["8"]
         os: [windows-latest]
     steps:
-#      - uses: actions/checkout@v1
-#      - name: Setup environment with node ${{ matrix.node_version }}
-#        uses: actions/setup-node@v1
-#        with:
-#          node-version: ${{ matrix.node_version }}
-##      - name: Load npm cache
-##        id: check-npm-cache
-##        uses: actions/cache@v1
-##        with:
-##          path: ~\AppData\Roaming\npm-cache
-##          key: ${{ runner.os }}-node-${{ hashFiles('**\package-lock.json') }}
-##          restore-keys: |
-##            ${{ runner.os }}-node-
-#      - name: Install yarn
-#        run: npm install -g yarn
-#      - name: Load yarn cache
-#        id: check-yarn-cache
-#        uses: actions/cache@v1
-#        with:
-#          path: node_modules
-#          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
-#          restore-keys: |
-#            ${{ runner.os }}-yarn-
-#      - name: Install dependencies
-#        if: steps.check-yarn-cache.outputs.cache-hit != 'true'
-#        run: yarn install
-##      - name: Run linting
-##        run: |
-##          yarn run lint:scripts
-##      - name: Run unit tests with coverage
-##        run: |
-##          yarn run test:unit:coverage --token=${{secrets.CODACY_PROJECT_API_TOKEN}}
-#      - name: Build exe
-#        run: yarn run build:win
-#      - name: Mock assets for integration tests
-#        run: |
-#          (robocopy ./tests/mock-assets/ %userprofile%\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets\ /v) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0
-#        shell: cmd
-#      - name: Run integration tests
-#        run: yarn run test:integration
+      #      - uses: actions/checkout@v1
+      #      - name: Setup environment with node ${{ matrix.node_version }}
+      #        uses: actions/setup-node@v1
+      #        with:
+      #          node-version: ${{ matrix.node_version }}
+      ##      - name: Load npm cache
+      ##        id: check-npm-cache
+      ##        uses: actions/cache@v1
+      ##        with:
+      ##          path: ~\AppData\Roaming\npm-cache
+      ##          key: ${{ runner.os }}-node-${{ hashFiles("**\package-lock.json") }}
+      ##          restore-keys: |
+      ##            ${{ runner.os }}-node-
+      #      - name: Install yarn
+      #        run: npm install -g yarn
+      #      - name: Load yarn cache
+      #        id: check-yarn-cache
+      #        uses: actions/cache@v1
+      #        with:
+      #          path: node_modules
+      #          key: ${{ runner.os }}-yarn-${{ hashFiles("yarn.lock") }}
+      #          restore-keys: |
+      #            ${{ runner.os }}-yarn-
+      #      - name: Install dependencies
+      #        if: steps.check-yarn-cache.outputs.cache-hit != "true"
+      #        run: yarn install
+      ##      - name: Run linting
+      ##        run: |
+      ##          yarn run lint:scripts
+      ##      - name: Run unit tests with coverage
+      ##        run: |
+      ##          yarn run test:unit:coverage --token=${{secrets.CODACY_PROJECT_API_TOKEN}}
+      #      - name: Build exe
+      #        run: yarn run build:win
+      #      - name: Mock assets for integration tests
+      #        run: |
+      #          (robocopy ./tests/mock-assets/ %userprofile%\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets\ /v) ^& IF %ERRORLEVEL% LEQ 4 exit /B 0
+      #        shell: cmd
+      #      - name: Run integration tests
+      #        run: yarn run test:integration
       - uses: 8398a7/action-slack@v2
         with:
           status: custom
           payload: |
             {
-              text: "Custom Field Check",
-              attachments: [{
-                "author_name": "8398a7@action-slack", // json
-                fallback: 'fallback',
-                color: 'good',
-                title: 'CI Result',
-                text: 'Succeeded',
-                fields: [{
-                  title: 'lower case',
-                  value: 'LOWER CASE CHECK'.toLowerCase(),
-                  short: true
-                },
-                {
-                  title: 'reverse',
-                  value: 'gnirts esrever'.split('').reverse().join(''),
-                  short: true
-                },
-                {
-                  title: 'long title1',
-                  value: 'long value1',
-                  short: false
-                }],
-                actions: [{
-                }]
-              }]
+               "text": "Custom Field Check",
+               "attachments": [
+                  {
+                     "author_name": "8398a7@action-slack",
+                     "fallback": "fallback",
+                     "color": "good",
+                     "title": "CI Result",
+                     "text": "Succeeded",
+                     "fields": [
+                        {
+                           "title": "lower case",
+                           "value": "LOWER CASE CHECK",
+                           "short": true
+                        },
+                        {
+                           "title": "reverse",
+                           "value": "gnirts esrever",
+                           "short": true
+                        },
+                        {
+                           "title": "long title1",
+                           "value": "long value1",
+                           "short": false
+                        }
+                     ],
+                     "actions": [
+                        {}
+                     ]
+                  }
+               ]
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
