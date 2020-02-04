@@ -57,10 +57,6 @@ jobs:
 #      - name: Run integration tests
 #        run: yarn run test:integration
       - name: Report
-        uses: voxmedia/github-action-slack-notify-build@v1
-        with:
-          channel: webservives
-          status: STARTED
-          color: good
-        env:
-          SLACK_BOT_TOKEN: xoxb-546601924340-922533381074-nFsKghsiOu4Go77gKILQXMsR
+      uses: actions/slack-notifier-action@v1
+      with:
+        webhook_url: 'https://hooks.slack.com/services/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'
