@@ -60,6 +60,5 @@ jobs:
         env:
           SLACK_WEBHOOK: https://hooks.slack.com/services/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
         uses: Ilshidur/action-slack@master
-        shell: cmd
         with:
           args: "A new commit has been pushed." # Optional
