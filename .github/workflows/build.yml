@@ -56,7 +56,8 @@ jobs:
 #        shell: cmd
 #      - name: Run integration tests
 #        run: yarn run test:integration
-      - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2.0.0
-        env:
-          SLACK_WEBHOOK: https://hooks.slack.com/services/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
+        - name: Slack notification
+          uses: Ilshidur/action-slack@master
+          env:
+            SLACK_WEBHOOK: https://hooks.slack.com/services/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
+            SLACK_CUSTOM_PAYLOAD: '{"text":"Custom payload from {{ GITHUB_REPOSITORY }} \\n *with* `new` _line_ escaped","username": "{{ GITHUB_ACTOR }}"}'
